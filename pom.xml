@@ -234,7 +234,20 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <docker>
+            <publishRegistry>
+              <username>${docker.publishRegistry.username}</username>
+              <password>${docker.publishRegistry.password}</password>
+            </publishRegistry>
+          </docker>
+        </configuration>
         <executions>
+          <execution>
+            <goals>
+              <goal>build-image-no-fork</goal>
+            </goals>
+          </execution>
           <execution>
             <!-- Spring Boot Actuator displays build-related information
               if a META-INF/build-info.properties file is present -->
